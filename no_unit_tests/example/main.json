@@ -11,28 +11,31 @@
         {
             "title": "Startpage",
             "components": [
-                {
-                    "path": "components/2split",
-                    "args": {
-                        ">{component_1 : component}": {
-                            "path": "internal/components/navbar"
-                        }
-                    }
-                }
             ]
         },
         {
-            "title": "About"
+            "title": "About",
+            "components": [
+            ]
         }
     ],
     "header": {
         "components": [
             {
-                "path": "components/2split",
+                "path": "internal/components/navbar",
                 "args": {
-                    ">{component_1 : component}": {
-                        "path": "internal/components/navbar"
-                    }
+                    "background_color": "black",
+                    "color": "white",
+                    "buttons": [
+                        {
+                            "text": "home",
+                            "href": "Startpage.html"
+                        },
+                        {
+                            "text": "About",
+                            "href": "About.html"
+                        }
+                    ]
                 }
             }
         ]

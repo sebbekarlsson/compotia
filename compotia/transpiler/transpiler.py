@@ -62,7 +62,12 @@ class Transpiler(object):
         else:
             os.makedirs(out_path)
 
-        css = ''
+        css = """
+            * {
+                margin: 0;
+                padding: 0;
+            }
+        """
         js = ''
         header_html = ''
         footer_html = ''
