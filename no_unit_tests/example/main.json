@@ -1,0 +1,16 @@
+{
+    "title": "Example Template",
+    "pages": [
+        {
+            "title": "Startpage",
+            "components": [
+                {
+                    "path": "components/navbar"
+                }
+            ]
+        },
+        {
+            "title": "About"
+        }
+    ]
+}
