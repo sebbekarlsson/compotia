@@ -1,8 +1,8 @@
 from compotia.transpiler.transpiler import Transpiler
 
+
 transpiler = Transpiler()
 transpiler.transpile('tests/test_project/main.json', 'tests/test_project/output')
-
 
 def test_components():
     content = ''
