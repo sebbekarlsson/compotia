@@ -20,6 +20,18 @@
     </head>
     <body>
         <div id='content'>
+            <div class='2split'>
+    <div class='split'><nav class='navbar'>
+    <ul>
+        {% for button in buttons %}
+        <li><a href='{{ button.href }}'>{{ button.text }}</a></li>
+        {% endfor %}
+    </ul>
+</nav>
+</div>
+    <div class='split'></div>
+</div>
+            
             
         </div>
     </body>

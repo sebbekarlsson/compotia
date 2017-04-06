@@ -36,27 +36,7 @@ class Page(HTMLElement):
 
         return _t.render(content=content,
                 stylesheets=self.stylesheets,
-                scripts=self.scripts
+                scripts=self.scripts,
+                content_header='{{ content_header }}',
+                content_footer='{{ content_footer }}',
                 )
-
-    def get_css(self):
-        _css = ''
-
-        for component in self.get_components():
-            if component is self:
-                continue
-
-            _css += component.get_css()
-
-        return _css
-
-    def get_js(self):
-        _js = ''
-
-        for component in self.get_components():
-            if component is self:
-                continue
-
-            _js += component.get_js()
-        
-        return _js

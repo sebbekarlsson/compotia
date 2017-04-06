@@ -1,6 +1,8 @@
 from compotia.information import stdout_error
 from compotia.transpiler.Page import Page
+from compotia.transpiler.Component import Component
 from compotia.utils import clean_str
+from jinja2 import Template
 import json
 import os
 import shutil
@@ -62,6 +64,8 @@ class Transpiler(object):
 
         css = ''
         js = ''
+        header_html = ''
+        footer_html = ''
 
         # -- deps -- #
         dep_src = ''
@@ -90,6 +94,24 @@ class Transpiler(object):
 
                 js += dep_src
 
+        # -- header -- #
+        if 'header' in self.config:
+            if 'components' in self.config['header']:
+                for comp_conf in self.config['header']['components']:
+                    comp = Component(comp_conf)
+                    css += comp.get_css()
+                    js += comp.get_js()
+                    header_html += comp.get_html()
+
+        # -- footer -- #
+        if 'footer' in self.config:
+            if 'components' in self.config['footer']:
+                for comp_conf in self.config['footer']['components']:
+                    comp = Component(comp_conf)
+                    css += comp.get_css()
+                    js += comp.get_js()
+                    footer_html += comp.get_html()
+
         # -- pages -- #
         pages = self.get_pages()
 
@@ -98,7 +120,11 @@ class Transpiler(object):
                 '{}/{}'.format(out_path, '{}.html'.format(page.title)),
                 'w+'
             ) as htmlfile:
-                htmlfile.write(page.get_html())
+                _t = Template(page.get_html())
+                htmlfile.write(_t.render(
+                    content_header=header_html,
+                    content_footer=footer_html
+                    ))
             htmlfile.close()
 
             css += page.get_css()

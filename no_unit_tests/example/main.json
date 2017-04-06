@@ -24,5 +24,17 @@
         {
             "title": "About"
         }
-    ]
+    ],
+    "header": {
+        "components": [
+            {
+                "path": "components/2split",
+                "args": {
+                    ">{component_1 : component}": {
+                        "path": "internal/components/navbar"
+                    }
+                }
+            }
+        ]
+    }
 }

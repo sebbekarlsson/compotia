@@ -28,3 +28,36 @@ class HTMLElement(object):
                 comps += self.get_components(component, comps)
         
         return comps
+
+    def get_html(self):
+        _t = Template(self.html)
+
+        content = ''
+
+        for component in self.get_components():
+            if component is self:
+                continue
+
+            content += component.get_html()
+
+    def get_css(self):
+        _css = ''
+
+        for component in self.get_components():
+            if component is self:
+                continue
+
+            _css += component.get_css()
+
+        return _css
+
+    def get_js(self):
+        _js = ''
+
+        for component in self.get_components():
+            if component is self:
+                continue
+
+            _js += component.get_js()
+        
+        return _js
