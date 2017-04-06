@@ -24,3 +24,4 @@ setup(
 
 subprocess.call(['mkdir', '/tmp/compotia'])
 subprocess.Popen('cp -r ./compotia/internal/templates/ /tmp/compotia/.', shell=True)
+subprocess.Popen('cp -r ./compotia/internal/components/ /tmp/compotia/.', shell=True)

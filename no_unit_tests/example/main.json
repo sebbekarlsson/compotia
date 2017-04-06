@@ -5,7 +5,23 @@
             "title": "Startpage",
             "components": [
                 {
-                    "path": "components/navbar"
+                    "path": "internal/components/navbar",
+                    "args": {
+                        "buttons": [
+                            {
+                                "text": "Test123",
+                                "href": "/test"
+                            },
+                            {
+                                "text": "EXAMPLE",
+                                "href": "/EXAMPLE"
+                            },
+                            {
+                                "text": "Wow",
+                                "href": "/wow"
+                            }
+                        ]
+                    }
                 }
             ]
         },

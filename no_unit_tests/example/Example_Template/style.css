@@ -1,0 +1,11 @@
+.navbar {
+    width: 100%;
+}
+
+.navbar li, .navbar ul {
+    list-style: none;
+}
+
+.navbar a {
+    color: blue;
+}

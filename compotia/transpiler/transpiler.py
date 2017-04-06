@@ -1,7 +1,9 @@
 from compotia.information import stdout_error
 from compotia.transpiler.Page import Page
+from compotia.utils import clean_str
 import json
 import os
+import shutil
 
 
 class Transpiler(object):
@@ -45,5 +47,45 @@ class Transpiler(object):
             if field not in conf:
                 stdout_error('missing field: "{}" in configuration.'.format(
                     field))
+                quit()
 
+        self.config['title'] = clean_str(self.config['title'])
+        
+        out_path += '/{}'.format(self.config['title'])
+
+        if os.path.isdir(out_path):
+            shutil.rmtree(out_path)
+            os.makedirs(out_path)
+        else:
+            os.makedirs(out_path)
+
+        # -- pages -- #
         pages = self.get_pages()
+
+        css = ''
+        js = ''
+
+        for page in pages:
+            with open(
+                '{}/{}'.format(out_path, '{}.html'.format(page.title)),
+                'w+'
+            ) as htmlfile:
+                htmlfile.write(page.get_html())
+            htmlfile.close()
+
+            css += page.get_css()
+            js += page.get_js()
+
+        with open(
+            '{}/{}'.format(out_path, '{}.css'.format('style')),
+            'w+'
+        ) as cssfile:
+            cssfile.write(css)
+        cssfile.close()
+
+        with open(
+            '{}/{}'.format(out_path, '{}.js'.format('main')),
+            'w+'
+        ) as jsfile:
+            jsfile.write(js)
+        jsfile.close()
