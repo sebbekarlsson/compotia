@@ -20,6 +20,9 @@ class Page(HTMLElement):
             self.html = layoutfile.read()
         layoutfile.close()
 
+        self.stylesheets = ['style.css']
+        self.scripts = ['main.js']
+
     def get_html(self):
         _t = Template(self.html)
 
@@ -31,7 +34,10 @@ class Page(HTMLElement):
 
             content += component.get_html()
 
-        return _t.render(content=content)
+        return _t.render(content=content,
+                stylesheets=self.stylesheets,
+                scripts=self.scripts
+                )
 
     def get_css(self):
         _css = ''

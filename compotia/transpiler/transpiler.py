@@ -4,6 +4,7 @@ from compotia.utils import clean_str
 import json
 import os
 import shutil
+import requests
 
 
 class Transpiler(object):
@@ -59,11 +60,38 @@ class Transpiler(object):
         else:
             os.makedirs(out_path)
 
-        # -- pages -- #
-        pages = self.get_pages()
-
         css = ''
         js = ''
+
+        # -- deps -- #
+        dep_src = ''
+        if 'css' in self.config:
+            for dep in self.config['css']:
+                if 'http' in dep:
+                    dep_src = requests.get(dep)
+                    dep_src = dep_src.text if hasattr(dep_src, 'text') else ''
+                else:
+                    with open(dep) as depfile:
+                        dep_src = depfile.read()
+                    depfile.close()
+
+                css += dep_src
+
+        dep_src = ''
+        if 'js' in self.config:
+            for dep in self.config['js']:
+                if 'http' in dep:
+                    dep_src = requests.get(dep)
+                    dep_src = dep_src.text if hasattr(dep_src, 'text') else ''
+                else:
+                    with open(dep) as depfile:
+                        dep_src = depfile.read()
+                    depfile.close()
+
+                js += dep_src
+
+        # -- pages -- #
+        pages = self.get_pages()
 
         for page in pages:
             with open(

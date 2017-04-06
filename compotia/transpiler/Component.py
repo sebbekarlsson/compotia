@@ -63,7 +63,7 @@ class Component(compotia.transpiler.HTMLElement.HTMLElement):
                             args_str = args_str.replace(m_k, k)
                             self.config = json.loads(args_str)
 
-                            self.config['args'][k] = comp.html
+                            self.config['args'][k] = comp.get_html()
 
     def get_html(self):
         if 'args' in self.config:

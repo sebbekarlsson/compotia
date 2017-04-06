@@ -5,7 +5,13 @@
             <link
             rel='stylesheet'
             type='text/css'
-            href='{{ sheet.path }}'/>
+            href='{{ sheet }}'/>
+        {% endfor %}
+
+        {% for script in scripts %}
+            <script
+            type='text/javascript'
+            src='{{ script }}'></script>
         {% endfor %}
 
         {{ head }}
