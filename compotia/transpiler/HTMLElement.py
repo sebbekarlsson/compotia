@@ -23,7 +23,9 @@ class HTMLElement(object):
             _component = self
         
         if _component is not None:
-            comps.append(_component)
+            if _component not in comps:
+                comps.append(_component)
+
             for component in _component.components:
                 comps += self.get_components(component, comps)
         

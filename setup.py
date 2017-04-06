@@ -9,7 +9,8 @@ setup(
     install_requires=[
         'watchdog',
         'requests',
-        'Jinja2'
+        'Jinja2',
+        'pytest'
     ],
     packages=[
         'compotia',
