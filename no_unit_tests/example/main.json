@@ -5,22 +5,11 @@
             "title": "Startpage",
             "components": [
                 {
-                    "path": "internal/components/navbar",
+                    "path": "components/2split",
                     "args": {
-                        "buttons": [
-                            {
-                                "text": "Test123",
-                                "href": "/test"
-                            },
-                            {
-                                "text": "EXAMPLE",
-                                "href": "/EXAMPLE"
-                            },
-                            {
-                                "text": "Wow",
-                                "href": "/wow"
-                            }
-                        ]
+                        ">{component_1 : component}": {
+                            "path": "internal/components/navbar"
+                        }
                     }
                 }
             ]

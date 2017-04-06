@@ -2,6 +2,7 @@ import compotia.transpiler
 from compotia.information import stdout_warning
 import os
 from jinja2 import Template
+import json
 
 
 class Component(compotia.transpiler.HTMLElement.HTMLElement):
@@ -37,6 +38,32 @@ class Component(compotia.transpiler.HTMLElement.HTMLElement):
                 with open('{}/{}'.format(self.config['path'], 'component.js')) as jsfile:
                     self.js += jsfile.read()
                 jsfile.close()
+
+            # -- reformat args -- #
+            if 'args' in self.config:
+                args_str = json.dumps(self.config)
+                _m_keys = args_str.split('>{')
+
+                if len(_m_keys) > 0:
+                    _m_keys.pop(0)
+
+                for m_k in _m_keys:
+                    m_k = '>{' + m_k.split('}')[0] + '}'
+                    k = m_k.split(':')[0].replace(' ', '').replace('>{', '')
+                    v = m_k.split(':')[1].replace(' ', '').replace('}', '')
+
+                    if v == 'component':
+                        if m_k in self.config['args']:
+                            comp_conf = self.config['args'][m_k]
+                            comp = compotia.transpiler.Component.Component(comp_conf)
+                            
+                            self.js += comp.get_js()
+                            self.css += comp.get_css()
+
+                            args_str = args_str.replace(m_k, k)
+                            self.config = json.loads(args_str)
+
+                            self.config['args'][k] = comp.html
 
     def get_html(self):
         if 'args' in self.config:

@@ -9,17 +9,17 @@
     </head>
     <body>
         <div id='content'>
-            <nav class='navbar'>
+            <div class='2split'>
+    <div class='split'><nav class='navbar'>
     <ul>
-        
-        <li><a href='/test'>Test123</a></li>
-        
-        <li><a href='/EXAMPLE'>EXAMPLE</a></li>
-        
-        <li><a href='/wow'>Wow</a></li>
-        
+        {% for button in buttons %}
+        <li><a href='{{ button.href }}'>{{ button.text }}</a></li>
+        {% endfor %}
     </ul>
 </nav>
+</div>
+    <div class='split'></div>
+</div>
         </div>
     </body>
 </html>
