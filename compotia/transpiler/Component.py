@@ -3,6 +3,7 @@ from compotia.information import stdout_warning
 import os
 from jinja2 import Template
 import json
+import sass
 
 
 class Component(compotia.transpiler.HTMLElement.HTMLElement):
@@ -32,6 +33,12 @@ class Component(compotia.transpiler.HTMLElement.HTMLElement):
                 with open('{}/{}'.format(self.config['path'], 'component.css')) as cssfile:
                     self.css += cssfile.read()
                 cssfile.close()
+
+            scss_path = '{}/{}'.format(self.config['path'], 'component.scss')
+            if os.path.isfile(scss_path):
+                with open('{}/{}'.format(self.config['path'], 'component.scss')) as scssfile:
+                    self.css += sass.compile(string=scssfile.read())
+                scssfile.close()
 
             js_path = '{}/{}'.format(self.config['path'], 'component.js')
             if os.path.isfile(js_path):

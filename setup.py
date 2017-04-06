@@ -10,7 +10,8 @@ setup(
         'watchdog',
         'requests',
         'Jinja2',
-        'pytest'
+        'pytest',
+        'libsass'
     ],
     packages=[
         'compotia',
