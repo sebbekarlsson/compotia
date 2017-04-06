@@ -66,25 +66,25 @@ class Component(compotia.transpiler.HTMLElement.HTMLElement):
                             self.config['args'][k] = comp.get_html()
 
     def get_html(self):
-        if 'args' in self.config:
-            _t = Template(self.html)
+        if 'args' not in self.config:
+            self.config['args'] = {}
 
-            return _t.render(**self.config['args'])
+        _t = Template(self.html)
 
-        return self.html
+        return _t.render(**self.config['args'])
 
     def get_css(self):
-        if 'args' in self.config:
-            _t = Template(self.css)
-
-            return _t.render(**self.config['args'])
+        if 'args' not in self.config:
+            self.config['args'] = {}
         
-        return self.css
+        _t = Template(self.css)
+
+        return _t.render(**self.config['args'])
 
     def get_js(self):
-        if 'args' in self.config:
-            _t = Template(self.js)
+        if 'args' not in self.config:
+            self.config['args'] = {}
 
-            return _t.render(**self.config['args'])
-        
-        return self.js
+        _t = Template(self.js)
+
+        return _t.render(**self.config['args'])
