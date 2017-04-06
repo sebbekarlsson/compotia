@@ -1,0 +1,40 @@
+{
+    "title": "template",
+    "css": [
+        "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    ],
+    "js": [
+        "https://code.jquery.com/jquery-3.2.1.js",
+        "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    ],
+    "pages": [
+        {
+            "title": "Startpage",
+            "components": [
+                {
+                    "path": "internal/components/navbar",
+                    "args": {
+                        "buttons": [
+                            {"text": "123", "href": "/"}
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "About"
+        }
+    ],
+    "header": {
+        "components": [
+            {
+                "path": "internal/components/navbar",
+                "args": {
+                    "buttons": [
+                        {"text": "123", "href": "/"}
+                    ]
+                }
+            }
+        ]
+    }
+}
