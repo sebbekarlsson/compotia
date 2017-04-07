@@ -46,7 +46,9 @@ class HTMLElement(object):
             if component is self:
                 continue
 
-            _css += component.get_css()
+            __css = component.get_css()
+            if __css not in _css:
+                _css += __css
 
         return _css
 
@@ -57,6 +59,8 @@ class HTMLElement(object):
             if component is self:
                 continue
 
-            _js += component.get_js()
+            __js = component.get_js()
+            if __js not in _js:
+                _js += __js
         
         return _js

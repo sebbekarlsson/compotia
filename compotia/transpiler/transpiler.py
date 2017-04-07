@@ -132,8 +132,13 @@ class Transpiler(object):
                     ))
             htmlfile.close()
 
-            css += page.get_css()
-            js += page.get_js()
+            page_css = page.get_css()
+            if page_css not in css:
+                css += page_css
+
+            page_js = page.get_js()
+            if page_js not in js:
+                js += page_js
 
         if '#ONCE' in js and '#ENDONCE' in js:
             once_parts = js.split('#ONCE')
