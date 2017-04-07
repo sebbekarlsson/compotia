@@ -135,6 +135,27 @@ class Transpiler(object):
             css += page.get_css()
             js += page.get_js()
 
+        if '#ONCE' in js and '#ENDONCE' in js:
+            once_parts = js.split('#ONCE')
+
+            once_map = {}
+
+            for part in once_parts:
+                part = part.split('#ENDONCE')[0]
+
+                if part not in once_map:
+                    once_map[part] = 1
+                else:
+                    once_map[part] += 1
+           
+            
+            for k, v in once_map.items():
+                if v > 1:
+                    js = js.replace(k, '')
+                    js += k
+
+            js = js.replace('#ONCE', '').replace('#ENDONCE', '')
+
         with open(
             '{}/{}'.format(out_path, '{}.css'.format('style')),
             'w+'
