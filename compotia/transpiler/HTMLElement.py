@@ -16,15 +16,12 @@ class HTMLElement(object):
         
     def get_components(self, _component=0, _components=None):
         comps = []
+
+        if len(comps) == 0:
+            comps = self.components
+
         if _components is not None:
             comps += _components
-
-        if _component == 0:
-            _component = self
-        
-        if _component is not None:
-            if _component not in comps:
-                comps.append(_component)
 
             for component in _component.components:
                 comps += self.get_components(component, comps)

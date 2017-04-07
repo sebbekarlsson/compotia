@@ -1,4 +1,5 @@
-from compotia.transpiler.Page import Page 
+from compotia.transpiler.Page import Page
+from compotia.transpiler.Component import Component
 
 
 def test_get_components():
@@ -19,7 +20,6 @@ def test_get_components():
     for comp in el.get_components():
         assert '<a' in comp.get_html()
 
-# FAILS
 def test_count_get_components():
     el = Page(config={
         "title": "test",
@@ -45,7 +45,6 @@ def test_count_get_components():
 
     assert(len(el.get_components()) == 2)
 
-# FAILS
 def test_count_zero_components():
     el = Page(config={
         "title": "test",
