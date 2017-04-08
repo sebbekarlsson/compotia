@@ -1,0 +1,43 @@
+{
+    "title": "template",
+    "css": [
+    ],
+    "js": [
+    ],
+    "header": {
+        "components": [
+            {
+                "path": "internal/components/navbar",
+                "args": {
+                    "background_color": "black",
+                    "color": "white",
+                    "buttons": [
+                        {"text": "123", "href": "/"}
+                    ]
+                }
+            }
+        ]
+    },
+    "pages": [
+        {
+            "title": "Startpage",
+            "components": [
+                {
+                    "path": "internal/components/slider",
+                    "args": {
+                        "id": "mainSlider",
+                        "images": [
+                            {"src": "https://unsplash.it/g/1080/720?ver=0&random", "alt": ""},
+                            {"src": "https://unsplash.it/g/1080/720?ver=1&random", "alt": ""},
+                            {"src": "https://unsplash.it/g/1080/720?ver=2&random", "alt": ""},
+                            {"src": "https://unsplash.it/g/1080/720?ver=3&random", "alt": ""}
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "title": "About"
+        }
+    ]
+}
