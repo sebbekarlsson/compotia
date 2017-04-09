@@ -1,4 +1,4 @@
-#My philosophy of component development
+# My philosophy of component development
 > The philosophy of modular re-usable components.
 
 > A component should:
