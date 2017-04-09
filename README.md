@@ -8,3 +8,4 @@
 ## Getting started
 * [Installation](INSTALLATION.md)
 * [Basic usage](BASIC\_USAGE.md)
+* [My philosophy of component development](COMPONENT_PHILOSOPHY.md)
