@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 from compotia.information import stdout_error
 from compotia.transpiler.Page import Page
 from compotia.transpiler.Component import Component
@@ -165,7 +166,7 @@ class Transpiler(object):
             '{}/{}'.format(out_path, '{}.css'.format('style')),
             'w+'
         ) as cssfile:
-            cssfile.write(css)
+            cssfile.write(css.encode('utf-8'))
         cssfile.close()
 
         with open(

@@ -1,0 +1,13 @@
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+    <div class="mdl-tabs__tab-bar">
+        {% for pane in panes %}
+            <a href="#pane-{{ pane.id }}" class="mdl-tabs__tab {% if loop.index <= 1 %}is-active{% endif %}">{{ pane.title }}</a>
+        {% endfor %}
+    </div>
+
+    {% for pane in panes %}
+        <div class="mdl-tabs__panel {% if loop.index <= 1 %}is-active{% endif %}" id="pane-{{ pane.id }}">
+            {{ pane.content }}
+        </div>
+    {% endfor %}
+</div>

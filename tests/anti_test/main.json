@@ -1,19 +1,39 @@
 {
     "title": "output",
     "css": [
+        "https://fonts.googleapis.com/icon?family=Material+Icons",
+        "https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"
     ],
     "js": [
+        "https://code.getmdl.io/1.3.0/material.min.js"
     ],
     "header": {
         "components": [
             {
-                "path": "internal/components/navbar",
+                "path": "internal/components/mdl-layout",
                 "args": {
-                    "background_color": "black",
-                    "color": "white",
-                    "buttons": [
-                        {"text": "123", "href": "/"}
-                    ]
+                    "head": true,
+                    "drawer": {
+                        "title": "Super cool menu",
+                        "buttons": [
+                            {
+                                "text": "A button!",
+                                "href": "#"
+                            },
+                            {
+                                "text": "A button! 2",
+                                "href": "#"
+                            },
+                            {
+                                "text": "A button! 3 ",
+                                "href": "#"
+                            },
+                            {
+                                "text": "A button! 4",
+                                "href": "#"
+                            }
+                        ]
+                    }
                 }
             }
         ]
@@ -23,15 +43,53 @@
             "title": "Startpage",
             "components": [
                 {
-                    "path": "internal/components/slider",
+                    "path": "internal/components/mdl-tabs",
                     "args": {
                         "id": "mainSlider",
-                        "images": [
-                            {"src": "https://unsplash.it/g/1080/720?ver=0&random", "alt": ""},
-                            {"src": "https://unsplash.it/g/1080/720?ver=1&random", "alt": ""},
-                            {"src": "https://unsplash.it/g/1080/720?ver=2&random", "alt": ""},
-                            {"src": "https://unsplash.it/g/1080/720?ver=3&random", "alt": ""}
+                        "panes": [
+                            {
+                                "title": "Bills",
+                                "id": "bills",
+                                "content": "No bills today"
+                            },
+                            {
+                                "title": "Purchases",
+                                "id": "purchases",
+                                "content": "You bought one item today"
+                            },
+                            {
+                                "title": "Sells",
+                                "id": "sells",
+                                "content": "No sells today"
+                            }
                         ]
+                    }
+                },
+                {
+                    "path": "internal/components/mdl-card-square",
+                    "args": {
+                        "title": "Beauty card",
+                        ">{text : component}": {
+                            "path": "internal/components/mdl-table",
+                            "args": {
+                                "keys": [
+                                    "name",
+                                    "lastname"
+                                ],
+                                "rows": [
+                                    {
+                                        "columns": [
+                                            "John",
+                                            "Doe"
+                                        ]
+                                    }
+                                ]
+                            }
+                        },
+                        "link": {
+                            "text": "Click me",
+                            "href": "#"
+                        }
                     }
                 }
             ]
@@ -39,5 +97,15 @@
         {
             "title": "About"
         }
-    ]
+    ],
+    "footer": {
+        "components": [
+            {
+                "path": "internal/components/mdl-layout",
+                "args": {
+                    "tail": true
+                }
+            }
+        ]
+    }
 }
