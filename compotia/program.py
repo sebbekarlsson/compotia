@@ -14,7 +14,7 @@ def run():
 
     if not args.watch:
         if not args.i:
-            args.i = '.'
+            args.i = './config.json'
         if not args.o:
             args.o = '.'
 
