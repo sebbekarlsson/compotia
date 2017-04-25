@@ -18,8 +18,10 @@ class Transpiler(object):
 
     def get_pages(self):
         pages = []
-        for page_conf in self.config['pages']:
-            pages.append(Page(page_conf))
+
+        if 'pages' in self.config:
+            for page_conf in self.config['pages']:
+                pages.append(Page(page_conf))
 
         return pages
 
