@@ -8,6 +8,7 @@ import json
 import os
 import shutil
 import requests
+import ntpath
 
 
 class Transpiler(object):
@@ -44,6 +45,9 @@ class Transpiler(object):
             conf = {}
 
         self.config = conf
+
+        if not 'static_dir' in self.config:
+            self.config['static_dir'] = 'static'
 
         required_fields = [
             'title'
@@ -177,3 +181,13 @@ class Transpiler(object):
         ) as jsfile:
             jsfile.write(js)
         jsfile.close()
+
+        if os.path.isdir(self.config['static_dir']):
+            dist_static_dir = '{}/{}'.format(
+                out_path,
+                ntpath.basename(self.config['static_dir'])
+            )
+            if os.path.exists(dist_static_dir):
+                shutil.rmtree(dist_static_dir)
+
+            shutil.copytree(self.config['static_dir'], dist_static_dir)
